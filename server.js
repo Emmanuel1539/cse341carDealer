@@ -5,6 +5,8 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Import routes
 const customerRoutes = require('./routes/customerRoute');

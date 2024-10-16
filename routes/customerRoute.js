@@ -2,10 +2,7 @@ const express = require('express');
 const customerController = require('../controllers/customerController');
 const router = express.Router();
 
-router.get('/', (req, res) => {
 
-    res.send('Hello my customers there!!!');
-});
 
 // Apply the customer-specific routes using middleware
 router.use('/customers', (req, res, next) => {
@@ -15,11 +12,11 @@ router.use('/customers', (req, res, next) => {
 });
 // Vehicle routes
 
-router.get('/customers', customerController.getAllCustomers);
-router.get('/customers/:id', customerController.getCustomerById);
-router.post('/customers', customerController.createCustomer);
-router.put('/customers/:id', customerController.updateCustomer);
-router.delete('/customers/:id', customerController.deleteCustomer);
+router.get('/', customerController.getAllCustomers);
+router.get('/:id', customerController.getCustomerById);
+router.post('/', customerController.createCustomer);
+router.put('/:id', customerController.updateCustomer);
+router.delete('/:id', customerController.deleteCustomer);
 
 
 module.exports = router;
