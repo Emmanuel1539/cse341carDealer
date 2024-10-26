@@ -1,0 +1,287 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:5500",
+  "basePath": "/",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Home page of the API",
+        "responses": {
+          "200": {
+            "description": "Home page reached successfully"
+          }
+        }
+      }
+    },
+    "/customers/": {
+      "get": {
+        "description": "Retrieve a list of all customers",
+        "responses": {
+          "200": {
+            "description": "List of customers retrieved successfully"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new customer",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "customer",
+            "description": "Customer to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Customer created successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "get": {
+        "description": "Retrieve a single customer by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Customer ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer retrieved successfully"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update a customer by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Customer ID"
+          },
+          {
+            "in": "body",
+            "name": "customer",
+            "description": "Updated customer data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer updated successfully"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a customer by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Customer ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer deleted successfully"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vehicles/": {
+      "get": {
+        "description": "Retrieve a list of all vehicles",
+        "responses": {
+          "200": {
+            "description": "List of vehicles retrieved successfully"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new vehicle",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "vehicle",
+            "description": "Vehicle to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Vehicle created successfully"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/vehicles/{id}": {
+      "get": {
+        "description": "Retrieve a single vehicle by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Vehicle ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle retrieved successfully"
+          },
+          "404": {
+            "description": "Vehicle not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "Update a vehicle by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Vehicle ID"
+          },
+          {
+            "in": "body",
+            "name": "vehicle",
+            "description": "Updated vehicle data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle updated successfully"
+          },
+          "404": {
+            "description": "Vehicle not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a vehicle by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Vehicle ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle deleted successfully"
+          },
+          "404": {
+            "description": "Vehicle not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string", "description": "First name", "example": "John" },
+        "lastName": { "type": "string", "description": "Last name", "example": "Doe" },
+        "email": { "type": "string", "description": "Email", "example": "john.doe@example.com" },
+        "phone": { "type": "string", "description": "Phone number", "example": "123-456-7890" },
+        "address": { "type": "string", "description": "Address", "example": "123 Main St" },
+        "customerType": { "type": "string", "description": "Type of customer", "example": "Regular" },
+        "registeredOn": { "type": "string", "format": "date-time", "description": "Registration date", "example": "2024-10-25T14:48:00.000Z" }
+      },
+      "required": ["firstName", "lastName", "email", "phone"]
+    },
+    "Vehicle": {
+      "type": "object",
+      "properties": {
+        "make": { "type": "string", "description": "Make", "example": "Toyota" },
+        "model": { "type": "string", "description": "Model", "example": "Camry" },
+        "year": { "type": "integer", "description": "Year", "example": 2023 },
+        "price": { "type": "number", "description": "Price", "example": 25000 },
+        "color": { "type": "string", "description": "Color", "example": "Blue" },
+        "mileage": { "type": "number", "description": "Mileage", "example": 15000 },
+        "transmission": { "type": "string", "description": "Transmission", "example": "Automatic" }
+      },
+      "required": ["make", "model", "year", "price", "color", "mileage", "transmission"]
+    }
+  }
+}

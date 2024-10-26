@@ -1,25 +1,17 @@
 const express = require('express');
 const vehicleController = require('../controllers/vehicleController');
 const router = express.Router();
+const {isAuthenticated} = require('../middleware/authenticate')
 
-
-
-
-// Apply the customer-specific routes using middleware
-router.use('/vehicles', (req, res, next) => {
-
-    console.log('Vehicles middleware is running');
-    next();  // Proceed to the actual route handler
-});
 
 
 // Vehicle routes
 
 router.get('/', vehicleController.getAllVehicles);
 router.get('/:id', vehicleController.getVehicleById);
-router.post('/', vehicleController.createVehicle);
-router.put('/:id', vehicleController.updateVehicle);
-router.delete('/:id', vehicleController.deleteVehicle);
+router.post('/', isAuthenticated, vehicleController.createVehicle);
+router.put('/:id', isAuthenticated, vehicleController.updateVehicle);
+router.delete('/:id', isAuthenticated, vehicleController.deleteVehicle);
 
 
 module.exports = router;

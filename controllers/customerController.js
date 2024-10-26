@@ -2,6 +2,7 @@ const Customer = require('../models/customer');
 
 // create new customer
 const createCustomer = async (req, res) => {
+  // #swagger-tags-["Customers"]
     try{
         const newCustomer = new Customer(req.body);
         await newCustomer.save();
@@ -14,6 +15,7 @@ const createCustomer = async (req, res) => {
 // Get all customers
 
 const getAllCustomers = async (req, res) => {
+  // #swagger-tags-["Customers"]
     try{
         const customers = await Customer.find()
         if(!customers) return res.status(404).json({message: 'You have not added any customer yet'});
@@ -26,6 +28,7 @@ const getAllCustomers = async (req, res) => {
 
 // Get a single customer by ID
 const getCustomerById = async (req, res) => {
+  // #swagger-tags-["Customers"]
     try {
       const customer = await Customer.findById(req.params.id);
       if (!customer) return res.status(404).json({ message: 'Customer not found' });
@@ -39,6 +42,7 @@ const getCustomerById = async (req, res) => {
 
 // Update a customer
 const updateCustomer = async (req, res) => {
+  // #swagger-tags-["Customers"]
     try {
       const updatedCustomer = await Customer.findByIdAndUpdate(req.params.id, req.body, { new: true });
       if (!updatedCustomer) return res.status(404).json({ message: 'Customer not found' });
@@ -52,6 +56,7 @@ const updateCustomer = async (req, res) => {
 
 // Delete a customer
 const deleteCustomer = async (req, res) => {
+  // #swagger-tags-["Customers"]
     try {
       const customer = await Customer.findByIdAndDelete(req.params.id);
       if (!customer) return res.status(404).json({ message: 'Customer not found' });
