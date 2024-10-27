@@ -5,9 +5,9 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:5500",
+  "host": "https://cse341cardealer.onrender.com",
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {
